@@ -8,8 +8,8 @@ Just a simple menu for Among Us, will be putting up once its finished, until the
 </tr>
 </table>
 
-[pic](https://github.com/whimzala/Void/blob/main/Images/void_main.png)
-[pic2](https://github.com/whimzala/Void/blob/main/Images/void_players.png)
+![pic](https://github.com/whimzala/Void/blob/main/Images/void_main.png)
+![pic2](https://github.com/whimzala/Void/blob/main/Images/void_players.png)
 
 ## [License](https://github.com/whimzala/Void/blob/master/LICENSE)
 
