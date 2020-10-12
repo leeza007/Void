@@ -1,105 +1,80 @@
-# ![Phantom](https://github.com/whimzala/Phantom/blob/master/Images/landing.png)
-# Phantom
+# ![Void](https://github.com/whimzala/Void/blob/main/Images/void_main.png)
+# Void
 <table>
 <tr>
 <td>
-Phantom gains access to Noitas lua engine allowing the user free range to do as they please with their scripts/mods and gives the ability to call restricted functions whenever needed.
+What started as a project dedicated to creating an in-game map/radar for Among Us turned into a full menu with way more features than originally planned for..
 </td>
 </tr>
 </table>
 
-### Using Phantom
-To use phantom, you will need some type of .dll injector. I will not be linking one, however if you have Cheat Engine that will suffice.
+### Using Void
+To use Void, you will need some type of .dll injector. I will not be linking one, however if you have Cheat Engine that will suffice.
 
 Set up steps:
 
-- Download all the files from [here](https://github.com/whimzala/Phantom/blob/master/CurrentBuild)
-- Extract the phantom folder to noitas main directory. 
-Example:`C:\Program Files (x86)\Steam\steamapps\common\Noita`
-- Run Noita
+- Download all the file from [here](https://github.com/whimzala/Void/blob/master/Final)
+- Extract to whatever location suits you, I just put it in the main directory of Among Us
+- Run Among Us
 - Open your .dll injector of choice
-- Go back to Noita and start a game (can be new or continued)
-- Inject the .dll once the game starts (injecting the .dll on the menu screen has a very high potential to cause issues, more info below)
+- Go back to Among Us
+- Inject the .dll once the game starts and in the main menu
 - Once injected, press the insert key (some laptops might require you to press fn+insert)
 
-If for some reason the key isn't working you can build the project yourself, and change the keys in [dUpdate.cpp](https://github.com/whimzala/Phantom/blob/master/src/dll/dUpdate.cpp) using win32 [Virtual Key Codes ](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes)
+If for some reason the key isn't working you can build the project yourself, and change the keys in [main.cpp](https://github.com/whimzala/Void/blob/master/src/main.cpp) using win32 [Virtual Key Codes ](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes)
 
-### Using Phantoms custom functions
-Phantom comes with a small set of custom functions, with plans on expanding these in the future.
-
-Functions:
-
-- console(text)
-```lua
-console("boo!"); -- basic console output, text colored orange
+### Void Features
+#### Self
+- Change the Kill Timer (setting to 0 will keep it at 0)
+- Change Player speed
+- Change Report Distance
+- Change Emergency meeting amounts
+- Set player hat
+- Set player pet
+- Set player skin
+- Set player color
+- Noclip
+- Danny Phantom (ghost mode)
+- Speed multiplier (player speed * this value)
+- Light radius
+#### Players (other players)
+- Display basic information of player
+- Goto (teleports you to them)
+- Bring (teleports them to you)
+- Voided (teleports them to 9999999,9999999)
+- Force Meeting
+- Kick
+#### Map
+- Show game map
+- Show ghosts on map
+- Show vents on map
+- Show area names on map
+- Change the maps background opacity (alpha)
+- Change the maps player icon size
+#### Settings
+- Log game data (output imposter, deaths, etc) to the log
+- Map Debugging (enable debug settings for the map)
+- Break Server
 ```
-- success(text)
-```lua
-success("boo!"); -- basic console output, text colored green
-```
-- execute(script)
-```lua
-execute("GamePrint('boo!');"); -- think of it as loadstring() except errors run through the console naturally.
-```
-- printstate()
-```lua
-printstate(); -- will return the current lua states address
-```
-
-### Phantoms lua access
-Phantom enables a plethora of functions that are restricted by Noita by default, which include:
-
-- The entirety of Noitas restricted mod functions, small example:
-```lua
--- this can be called whenever instead of only at mod initilization.
--- test.lua contains GamePrintImportant("Boo!","Got yaaah!");
-ModLuaFileAppend("data/scripts/items/spell_refresh.lua", "phantom/test.lua"); -- whenever a spell refreshes is picked up it will now print Boo! Got yaaah!
-```
-- The entirety of Lua's file I/O functions, small example:
-```lua
-file = io.open("test.lua", "w"); -- open the file in write mode, will create it if not already there
-file:write("boo!"); -- write some text to it
-file:close(); -- close the file
-```
-- The entirety of Lua's os functions, small example:
-```lua
-os.execute("cmd.exe"); -- would be like doing system("cmd.exe") in C, opens command prompt
-os.execute("echo boo!"); -- echo to the command prompt
-```
-- The entirety of Lua's debug functions, small example:
-```lua
-localPlayer = EntityGetWithTag("player_unit")[1]; -- get the localplayer
-setfenv(1,{_G = _G}); -- set the environment using _G from the old
-_G.print(_G.localPlayer) -- print localPlayer
-```
-- The entirety of Lua's ffi functions, small example:
-```lua
--- for the most part this is just running C from lua
-ffi.cdef[[
-typedef const char* boo;
-const char* scaredYa(boo text);
-]]
-```
-- The entirety of Lua's bitop functions, small example:
-```lua
-function printHex(d)
-  print("0x"..bit.tohex(d));
-end;
+This will make the server constantly vote until it freezes around the table, essentially.
 ```
 
-### Console commands (as of 2.5.0)
+### Radar/Map
+Void supports all three maps currently in Among Us, however I have no idea how they will appear on other screens, at which this point unless an issue request is made making me aware of this you will have to use the map debugging settings to find what works for you and build the project yourself.
 
-### Known bugs (bugs with * are priority)
+- Skeld
+![Skeld](https://github.com/whimzala/Void/blob/main/Images/void_main.png)
+- HQ
 
-- Injecting the .dll on the main menu screen will cause the file and phantom functions to fail registering.
-- Injecting the .dll on the main menu screen will sometimes make the lua_state unobtainable from the hook and halt the console.
-- Sometimes when injecting prebuilt scripts it will say it loaded successfully, however you will need to press the button again for it to actually load successfully.
-- Using the functions below will crash the game, working to find a fix asap. *
-```lua
-BiomeMapLoad_KeepPlayer();
-BiomeMapLoad();
-```
+- Polus
 
-## [License](https://github.com/whimzala/Phantom/blob/master/LICENSE)
+### Known bugs (bugs with * are priority for future updates)
+
+- Not injecting the .dll on the main screen will cause a crash
+- Disabling noclip outside of a game will cause a crash *
+- Logged data will not clear causing future logs to not send *
+- Players tab will crash due to one of the players being null *
+
+## [License](https://github.com/whimzala/Void/blob/master/LICENSE)
 
 MIT © [Whimzala](https://github.com/whimzala)
