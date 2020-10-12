@@ -1,4 +1,4 @@
-# ![Void](https://github.com/whimzala/Void/blob/main/Images/void_main.png)
+# ![Void](https://github.com/whimzala/Void/blob/main/Images/void_polus.png)
 # Void
 <table>
 <tr>
