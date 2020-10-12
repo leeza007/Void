@@ -63,10 +63,11 @@ This will make the server constantly vote until it freezes around the table, ess
 Void supports all three maps currently in Among Us, however I have no idea how they will appear on other screens, at which this point unless an issue request is made making me aware of this you will have to use the map debugging settings to find what works for you and build the project yourself.
 
 - Skeld
-![Skeld](https://github.com/whimzala/Void/blob/main/Images/void_main.png)
+![Skeld](https://github.com/whimzala/Void/blob/main/Images/Skeld.png)
 - HQ
-
+![HQ](https://github.com/whimzala/Void/blob/main/Images/HQ.png)
 - Polus
+![Polus](https://github.com/whimzala/Void/blob/main/Images/Polus.png)
 
 ### Known bugs (bugs with * are priority for future updates)
 
